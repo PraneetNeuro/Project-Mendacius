@@ -12,6 +12,8 @@ import Combine
 
 class HostMachine {
     
+    static var disks: [URL] = []
+    
     static var machineHardwareName: String? {
         var sysinfo = utsname()
         let result = uname(&sysinfo)
@@ -162,19 +164,23 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
             fileHandleForWriting: readPipe.fileHandleForWriting
         )
         
-        let blockAttachment2: VZDiskImageStorageDeviceAttachment
+        var blockAttachments: [VZVirtioBlockDeviceConfiguration] = []
         
-        do {
-            blockAttachment2 = try VZDiskImageStorageDeviceAttachment(
-                url: URL(fileURLWithPath: "/Users/praneets/Desktop/mint.img"),
-                readOnly: false
-            )
-        } catch {
-            NSLog("Failed to load bootableImage: \(error)")
-            return
+        for disk in HostMachine.disks {
+            let blockAttachment_temp : VZDiskImageStorageDeviceAttachment
+            do {
+                blockAttachment_temp = try VZDiskImageStorageDeviceAttachment(
+                    url: disk,
+                    readOnly: false
+                )
+            } catch {
+                NSLog("Failed to load bootableImage: \(error)")
+                return
+            }
+            
+            let blockDevicetemp = VZVirtioBlockDeviceConfiguration(attachment: blockAttachment_temp)
+            blockAttachments.append(blockDevicetemp)
         }
-
-        let blockDevice2 = VZVirtioBlockDeviceConfiguration(attachment: blockAttachment2)
         
         let entropy = VZVirtioEntropyDeviceConfiguration()
         
@@ -204,7 +210,10 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         config.entropyDevices = [entropy]
         config.memoryBalloonDevices = [memoryBalloon]
         config.serialPorts = [serial]
-        config.storageDevices = [blockDevice, blockDevice2]
+        config.storageDevices = [blockDevice]
+        for attachments in blockAttachments {
+            config.storageDevices.append(attachments)
+        }
         config.networkDevices = [networkDevice]
         do {
             try config.validate()

@@ -220,19 +220,44 @@ struct ContentView: View {
                                 Text("Disk size:\(Int(diskSizeinGB))GB")
                             }).padding([.leading,.trailing])
                             HStack {
-                            Button(action: {
-                                let executableURL = URL(fileURLWithPath: "/usr/local/bin/qemu-img")
-                                let out = Pipe()
-                                let result = Process()
-                                result.executableURL = executableURL
-                                result.arguments = ["create", "-f", "raw", "/Users/\(HostMachine.whoami())/Desktop/\(diskName.count == 0 ? VM_name : diskName)_disk.img", "\(Int(diskSizeinGB))G"]
-                                result.standardOutput = out
-                                try! result.run()
-                            }, label: {
-                                Text("Create disk (Optional)")
-                            }).padding([.leading,.trailing])
-                            Spacer()
+                                Button(action: {
+                                    let executableURL = URL(fileURLWithPath: "/usr/local/bin/qemu-img")
+                                    let out = Pipe()
+                                    let result = Process()
+                                    result.executableURL = executableURL
+                                    result.arguments = ["create", "-f", "raw", "/Users/\(HostMachine.whoami())/Desktop/\(diskName.count == 0 ? VM_name : diskName)_disk.img", "\(Int(diskSizeinGB))G"]
+                                    result.standardOutput = out
+                                    try! result.run()
+                                }, label: {
+                                    Text("Create disk (Optional)")
+                                }).padding([.leading,.trailing])
+                                Spacer()
                             }
+                        }
+                        HStack {
+                            Button(action: {
+                                let dialog = NSOpenPanel();
+                                dialog.title                   = "Choose all the disks to be attached with the VM";
+                                dialog.showsResizeIndicator    = true;
+                                dialog.showsHiddenFiles        = false;
+                                dialog.allowsMultipleSelection = true;
+                                dialog.canChooseDirectories = false;
+                                dialog.allowedFileTypes = ["img"]
+                                if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+                                    let result = dialog.urls
+                                    
+                                    if (result.count > 0) {
+                                        for path in result {
+                                            HostMachine.disks.append(path)
+                                        }
+                                    }
+                                } else {
+                                    return
+                                }
+                            }, label: {
+                                Text("Choose disk to attach with the VM")
+                            }).padding(.leading)
+                            Spacer()
                         }
                     }
                     VStack(alignment: .leading) {
