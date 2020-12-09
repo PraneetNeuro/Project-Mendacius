@@ -1,0 +1,631 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B7A9C4DF256F9ADF00E4935D /* Project_MendaciusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A9C4DE256F9ADF00E4935D /* Project_MendaciusApp.swift */; };
+		B7A9C4E1256F9ADF00E4935D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A9C4E0256F9ADF00E4935D /* ContentView.swift */; };
+		B7A9C4E3256F9AE300E4935D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A9C4E2256F9AE300E4935D /* Assets.xcassets */; };
+		B7A9C4E6256F9AE300E4935D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A9C4E5256F9AE300E4935D /* Preview Assets.xcassets */; };
+		B7A9C4F2256F9AE300E4935D /* Project_MendaciusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A9C4F1256F9AE300E4935D /* Project_MendaciusTests.swift */; };
+		B7A9C4FD256F9AE300E4935D /* Project_MendaciusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A9C4FC256F9AE300E4935D /* Project_MendaciusUITests.swift */; };
+		B7A9C50E256F9EAB00E4935D /* VirtualMachineModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A9C50D256F9EAB00E4935D /* VirtualMachineModal.swift */; };
+		B7A9C513256F9F8C00E4935D /* ConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A9C512256F9F8C00E4935D /* ConsoleViewController.swift */; };
+		B7A9C543256FA0E100E4935D /* SwiftTerm in Resources */ = {isa = PBXBuildFile; fileRef = B7A9C542256FA0E100E4935D /* SwiftTerm */; };
+		B7A9C54B256FA10100E4935D /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = B7A9C54A256FA10100E4935D /* SwiftTerm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B7A9C4EE256F9AE300E4935D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B7A9C4D3256F9ADF00E4935D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7A9C4DA256F9ADF00E4935D;
+			remoteInfo = "Project Mendacius";
+		};
+		B7A9C4F9256F9AE300E4935D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B7A9C4D3256F9ADF00E4935D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7A9C4DA256F9ADF00E4935D;
+			remoteInfo = "Project Mendacius";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B7A9C4DB256F9ADF00E4935D /* Project Mendacius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project Mendacius.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7A9C4DE256F9ADF00E4935D /* Project_MendaciusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_MendaciusApp.swift; sourceTree = "<group>"; };
+		B7A9C4E0256F9ADF00E4935D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B7A9C4E2256F9AE300E4935D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B7A9C4E5256F9AE300E4935D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B7A9C4E7256F9AE300E4935D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7A9C4E8256F9AE300E4935D /* Project_Mendacius.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_Mendacius.entitlements; sourceTree = "<group>"; };
+		B7A9C4ED256F9AE300E4935D /* Project MendaciusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project MendaciusTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7A9C4F1256F9AE300E4935D /* Project_MendaciusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_MendaciusTests.swift; sourceTree = "<group>"; };
+		B7A9C4F3256F9AE300E4935D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7A9C4F8256F9AE300E4935D /* Project MendaciusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project MendaciusUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7A9C4FC256F9AE300E4935D /* Project_MendaciusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_MendaciusUITests.swift; sourceTree = "<group>"; };
+		B7A9C4FE256F9AE300E4935D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7A9C50D256F9EAB00E4935D /* VirtualMachineModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineModal.swift; sourceTree = "<group>"; };
+		B7A9C512256F9F8C00E4935D /* ConsoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleViewController.swift; sourceTree = "<group>"; };
+		B7A9C542256FA0E100E4935D /* SwiftTerm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftTerm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B7A9C4D8256F9ADF00E4935D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7A9C54B256FA10100E4935D /* SwiftTerm in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7A9C4EA256F9AE300E4935D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7A9C4F5256F9AE300E4935D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B7A9C4D2256F9ADF00E4935D = {
+			isa = PBXGroup;
+			children = (
+				B7A9C4DD256F9ADF00E4935D /* Project Mendacius */,
+				B7A9C4F0256F9AE300E4935D /* Project MendaciusTests */,
+				B7A9C4FB256F9AE300E4935D /* Project MendaciusUITests */,
+				B7A9C4DC256F9ADF00E4935D /* Products */,
+				B7A9C549256FA10100E4935D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B7A9C4DC256F9ADF00E4935D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B7A9C4DB256F9ADF00E4935D /* Project Mendacius.app */,
+				B7A9C4ED256F9AE300E4935D /* Project MendaciusTests.xctest */,
+				B7A9C4F8256F9AE300E4935D /* Project MendaciusUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B7A9C4DD256F9ADF00E4935D /* Project Mendacius */ = {
+			isa = PBXGroup;
+			children = (
+				B7A9C542256FA0E100E4935D /* SwiftTerm */,
+				B7A9C4DE256F9ADF00E4935D /* Project_MendaciusApp.swift */,
+				B7A9C4E0256F9ADF00E4935D /* ContentView.swift */,
+				B7A9C4E2256F9AE300E4935D /* Assets.xcassets */,
+				B7A9C4E7256F9AE300E4935D /* Info.plist */,
+				B7A9C4E8256F9AE300E4935D /* Project_Mendacius.entitlements */,
+				B7A9C4E4256F9AE300E4935D /* Preview Content */,
+				B7A9C50D256F9EAB00E4935D /* VirtualMachineModal.swift */,
+				B7A9C512256F9F8C00E4935D /* ConsoleViewController.swift */,
+			);
+			path = "Project Mendacius";
+			sourceTree = "<group>";
+		};
+		B7A9C4E4256F9AE300E4935D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B7A9C4E5256F9AE300E4935D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B7A9C4F0256F9AE300E4935D /* Project MendaciusTests */ = {
+			isa = PBXGroup;
+			children = (
+				B7A9C4F1256F9AE300E4935D /* Project_MendaciusTests.swift */,
+				B7A9C4F3256F9AE300E4935D /* Info.plist */,
+			);
+			path = "Project MendaciusTests";
+			sourceTree = "<group>";
+		};
+		B7A9C4FB256F9AE300E4935D /* Project MendaciusUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B7A9C4FC256F9AE300E4935D /* Project_MendaciusUITests.swift */,
+				B7A9C4FE256F9AE300E4935D /* Info.plist */,
+			);
+			path = "Project MendaciusUITests";
+			sourceTree = "<group>";
+		};
+		B7A9C549256FA10100E4935D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B7A9C4DA256F9ADF00E4935D /* Project Mendacius */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7A9C501256F9AE300E4935D /* Build configuration list for PBXNativeTarget "Project Mendacius" */;
+			buildPhases = (
+				B7A9C4D7256F9ADF00E4935D /* Sources */,
+				B7A9C4D8256F9ADF00E4935D /* Frameworks */,
+				B7A9C4D9256F9ADF00E4935D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7A9C548256FA0FD00E4935D /* PBXTargetDependency */,
+			);
+			name = "Project Mendacius";
+			packageProductDependencies = (
+				B7A9C54A256FA10100E4935D /* SwiftTerm */,
+			);
+			productName = "Project Mendacius";
+			productReference = B7A9C4DB256F9ADF00E4935D /* Project Mendacius.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B7A9C4EC256F9AE300E4935D /* Project MendaciusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7A9C504256F9AE300E4935D /* Build configuration list for PBXNativeTarget "Project MendaciusTests" */;
+			buildPhases = (
+				B7A9C4E9256F9AE300E4935D /* Sources */,
+				B7A9C4EA256F9AE300E4935D /* Frameworks */,
+				B7A9C4EB256F9AE300E4935D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7A9C4EF256F9AE300E4935D /* PBXTargetDependency */,
+			);
+			name = "Project MendaciusTests";
+			productName = "Project MendaciusTests";
+			productReference = B7A9C4ED256F9AE300E4935D /* Project MendaciusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B7A9C4F7256F9AE300E4935D /* Project MendaciusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7A9C507256F9AE300E4935D /* Build configuration list for PBXNativeTarget "Project MendaciusUITests" */;
+			buildPhases = (
+				B7A9C4F4256F9AE300E4935D /* Sources */,
+				B7A9C4F5256F9AE300E4935D /* Frameworks */,
+				B7A9C4F6256F9AE300E4935D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7A9C4FA256F9AE300E4935D /* PBXTargetDependency */,
+			);
+			name = "Project MendaciusUITests";
+			productName = "Project MendaciusUITests";
+			productReference = B7A9C4F8256F9AE300E4935D /* Project MendaciusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B7A9C4D3256F9ADF00E4935D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					B7A9C4DA256F9ADF00E4935D = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					B7A9C4EC256F9AE300E4935D = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = B7A9C4DA256F9ADF00E4935D;
+					};
+					B7A9C4F7256F9AE300E4935D = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = B7A9C4DA256F9ADF00E4935D;
+					};
+				};
+			};
+			buildConfigurationList = B7A9C4D6256F9ADF00E4935D /* Build configuration list for PBXProject "Project Mendacius" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B7A9C4D2256F9ADF00E4935D;
+			productRefGroup = B7A9C4DC256F9ADF00E4935D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B7A9C4DA256F9ADF00E4935D /* Project Mendacius */,
+				B7A9C4EC256F9AE300E4935D /* Project MendaciusTests */,
+				B7A9C4F7256F9AE300E4935D /* Project MendaciusUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B7A9C4D9256F9ADF00E4935D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7A9C4E6256F9AE300E4935D /* Preview Assets.xcassets in Resources */,
+				B7A9C4E3256F9AE300E4935D /* Assets.xcassets in Resources */,
+				B7A9C543256FA0E100E4935D /* SwiftTerm in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7A9C4EB256F9AE300E4935D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7A9C4F6256F9AE300E4935D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B7A9C4D7256F9ADF00E4935D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7A9C513256F9F8C00E4935D /* ConsoleViewController.swift in Sources */,
+				B7A9C50E256F9EAB00E4935D /* VirtualMachineModal.swift in Sources */,
+				B7A9C4E1256F9ADF00E4935D /* ContentView.swift in Sources */,
+				B7A9C4DF256F9ADF00E4935D /* Project_MendaciusApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7A9C4E9256F9AE300E4935D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7A9C4F2256F9AE300E4935D /* Project_MendaciusTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7A9C4F4256F9AE300E4935D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7A9C4FD256F9AE300E4935D /* Project_MendaciusUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B7A9C4EF256F9AE300E4935D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7A9C4DA256F9ADF00E4935D /* Project Mendacius */;
+			targetProxy = B7A9C4EE256F9AE300E4935D /* PBXContainerItemProxy */;
+		};
+		B7A9C4FA256F9AE300E4935D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7A9C4DA256F9ADF00E4935D /* Project Mendacius */;
+			targetProxy = B7A9C4F9256F9AE300E4935D /* PBXContainerItemProxy */;
+		};
+		B7A9C548256FA0FD00E4935D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = B7A9C547256FA0FD00E4935D /* SwiftTerm */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B7A9C4FF256F9AE300E4935D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B7A9C500256F9AE300E4935D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		B7A9C502256F9AE300E4935D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Project Mendacius/Project_Mendacius.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Project Mendacius/Preview Content\"";
+				DEVELOPMENT_TEAM = TR3K2EP48P;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Project Mendacius/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luby.Project-Mendacius";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B7A9C503256F9AE300E4935D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Project Mendacius/Project_Mendacius.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Project Mendacius/Preview Content\"";
+				DEVELOPMENT_TEAM = TR3K2EP48P;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Project Mendacius/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luby.Project-Mendacius";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B7A9C505256F9AE300E4935D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TR3K2EP48P;
+				INFOPLIST_FILE = "Project MendaciusTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luby.Project-MendaciusTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project Mendacius.app/Contents/MacOS/Project Mendacius";
+			};
+			name = Debug;
+		};
+		B7A9C506256F9AE300E4935D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TR3K2EP48P;
+				INFOPLIST_FILE = "Project MendaciusTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luby.Project-MendaciusTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Project Mendacius.app/Contents/MacOS/Project Mendacius";
+			};
+			name = Release;
+		};
+		B7A9C508256F9AE300E4935D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TR3K2EP48P;
+				INFOPLIST_FILE = "Project MendaciusUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luby.Project-MendaciusUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Project Mendacius";
+			};
+			name = Debug;
+		};
+		B7A9C509256F9AE300E4935D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TR3K2EP48P;
+				INFOPLIST_FILE = "Project MendaciusUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luby.Project-MendaciusUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Project Mendacius";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B7A9C4D6256F9ADF00E4935D /* Build configuration list for PBXProject "Project Mendacius" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7A9C4FF256F9AE300E4935D /* Debug */,
+				B7A9C500256F9AE300E4935D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7A9C501256F9AE300E4935D /* Build configuration list for PBXNativeTarget "Project Mendacius" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7A9C502256F9AE300E4935D /* Debug */,
+				B7A9C503256F9AE300E4935D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7A9C504256F9AE300E4935D /* Build configuration list for PBXNativeTarget "Project MendaciusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7A9C505256F9AE300E4935D /* Debug */,
+				B7A9C506256F9AE300E4935D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7A9C507256F9AE300E4935D /* Build configuration list for PBXNativeTarget "Project MendaciusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7A9C508256F9AE300E4935D /* Debug */,
+				B7A9C509256F9AE300E4935D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B7A9C547256FA0FD00E4935D /* SwiftTerm */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftTerm;
+		};
+		B7A9C54A256FA10100E4935D /* SwiftTerm */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftTerm;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B7A9C4D3256F9ADF00E4935D /* Project object */;
+}
