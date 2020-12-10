@@ -2,7 +2,7 @@
 //  ConsoleViewController.swift
 //  Project Mendacius
 //
-//  Created by Praneet S on 26/11/20.
+//  Created by Praneet S and Meghana Khuntia on 26/11/20.
 //
 
 import Foundation

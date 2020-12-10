@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Project Mendacius
 //
-//  Created by Praneet S on 26/11/20.
+//  Created by Praneet S and Meghana Khuntia on 26/11/20.
 //
 
 import SwiftUI
@@ -124,11 +124,9 @@ struct ContentView: View {
                         Button(action: {
                             if let vm = viewModel.virtualMachine {
                                 if vm.canRequestStop {
-                                    do {
-                                        try vm.requestStop()
+                                        viewModel.stop()
                                         viewModel.consoleWindowController.close()
                                         viewModel.state = nil
-                                    } catch {}
                                 }
                             }
                         }, label: {
@@ -169,7 +167,9 @@ struct ContentView: View {
                     }
                 }
                 Spacer()
-                Text(VM_name)
+                if VM_name != "" && (UserDefaults.standard.array(forKey: "vms") ?? []).count > 0  {
+                    Text("\(VM_name)\nMemory: \(VirtualMachine.getDetails(VM_Name: VM_name, param: 1)) GB\nCPU Count: \(VirtualMachine.getDetails(VM_Name: VM_name, param: 2))")
+                }
                 Spacer()
             }
             Spacer()
@@ -255,7 +255,7 @@ struct ContentView: View {
                                     return
                                 }
                             }, label: {
-                                Text("Choose disk to attach with the VM")
+                                Text("Choose disks")
                             }).padding(.leading)
                             Spacer()
                         }
@@ -306,6 +306,11 @@ struct ContentView: View {
                                 viewModel.vm_name = VM_name
                                 UserDefaults.standard.set(memorySizeinGB, forKey: "\(VM_name)_memsize")
                                 UserDefaults.standard.set(cpuCount, forKey: "\(VM_name)_cpucount")
+                                if HostMachine.disks.count > 0 {
+                                    let encodedData = try? NSKeyedArchiver.archivedData(withRootObject: HostMachine.disks, requiringSecureCoding: false)
+                                    UserDefaults.standard.set(encodedData, forKey: "\(VM_name)_disks_of_vm")
+                                    
+                                }
                                 let userDefaults = UserDefaults.standard
                                 var vms: [Any] = userDefaults.array(forKey: "vms") ?? []
                                 vms.append(VM_name)

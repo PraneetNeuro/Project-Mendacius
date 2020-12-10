@@ -2,13 +2,26 @@
 //  VirtualMachineModal.swift
 //  Project Mendacius
 //
-//  Created by Praneet S on 26/11/20.
+//  Created by Praneet S and Meghana Khuntia on 26/11/20.
 //
 
 import Foundation
 import Virtualization
 import Cocoa
 import Combine
+
+class VirtualMachine {
+    static func getDetails(VM_Name: String, param: Int) -> Int {
+        let decodedObj = (try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.data(forKey: VM_Name)!) as! VirtualMachineInstance)
+        
+        if param == 1 {
+            return Int(decodedObj.memorySizeinGB)
+        } else if param == 2 {
+            return decodedObj.cpuCount
+        }
+        return 0
+    }
+}
 
 class HostMachine {
     
@@ -67,13 +80,12 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
     }
     
     func encode(with coder: NSCoder) {
-        print("ENCODE CALLED")
         coder.encode(kernelURL, forKey: "kernelurl")
         coder.encode(bootableImageURL, forKey: "booturl")
         coder.encode(initialRamdiskURL, forKey: "initurl")
         coder.encode(memorySizeinGB, forKey: "memorysize")
         coder.encode(vm_name, forKey: "vmname")
-        print(memorySizeinGB)
+        coder.encode(HostMachine.disks, forKey: "\(vm_name)_disks_of_vm")
         coder.encode(cpuCount, forKey: "cpucount")
     }
     
@@ -85,6 +97,7 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         vm_name = coder.decodeObject(forKey: "vmname") as! String
         memorySizeinGB = coder.decodeObject(forKey: "memorysize") as? Double ?? UserDefaults.standard.double(forKey: "\(vm_name)_memsize")
         cpuCount = coder.decodeObject(forKey: "cpucount") as? Int ?? Int(UserDefaults.standard.double(forKey: "\(vm_name)_cpucount"))
+        HostMachine.disks = coder.decodeObject(forKey: "\(vm_name)_disks_of_vm") as? [URL] ?? []
     }
     
     var vm_name: String = ""
@@ -155,8 +168,8 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         
         let bootloader = VZLinuxBootLoader(kernelURL: kernelURL)
         bootloader.initialRamdiskURL = initialRamdiskURL
-        bootloader.commandLine = "console=hvc0"
-        //bootloader.commandLine = "console=tty0"
+        //bootloader.commandLine = "console=hvc0"
+        bootloader.commandLine = "console=tty0"
         
         let serial = VZVirtioConsoleDeviceSerialPortConfiguration()
         serial.attachment = VZFileHandleSerialPortAttachment(
@@ -202,7 +215,6 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         
         let networkDevice = VZVirtioNetworkDeviceConfiguration()
         networkDevice.attachment = VZNATNetworkDeviceAttachment()
-        
         let config = VZVirtualMachineConfiguration()
         config.bootLoader = bootloader
         config.cpuCount = cpuCount
@@ -221,7 +233,6 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
             let vm = VZVirtualMachine(configuration: config)
             vm.delegate = self
             self.virtualMachine = vm
-            
             KeyValueObservingPublisher(object: vm, keyPath: \.state, options: [.initial, .new])
                 .sink { [weak self] state in
                     self?.state = state
