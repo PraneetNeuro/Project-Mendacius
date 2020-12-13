@@ -12,12 +12,16 @@ import Combine
 
 class VirtualMachine {
     static func getDetails(VM_Name: String, param: Int) -> Int {
-        let decodedObj = (try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.data(forKey: VM_Name)!) as! VirtualMachineInstance)
+        let decodedObj = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData((UserDefaults.standard.data(forKey: VM_Name) ?? Data(base64Encoded: ""))!) as? VirtualMachineInstance)
         
         if param == 1 {
-            return Int(decodedObj.memorySizeinGB)
+            if let obj = decodedObj {
+                return Int(obj.memorySizeinGB)
+            }
         } else if param == 2 {
-            return decodedObj.cpuCount
+            if let obj = decodedObj {
+                return obj.cpuCount
+            }
         }
         return 0
     }
@@ -36,18 +40,6 @@ class HostMachine {
         return identifier.trimmingCharacters(in: .controlCharacters)
     }
     
-    static func getMaxMemorySize() -> UInt64 {
-        let executableURL = URL(fileURLWithPath: "/usr/sbin/sysctl")
-        let out = Pipe()
-        let result = Process()
-        result.executableURL = executableURL
-        result.arguments = ["hw.memsize"]
-        result.standardOutput = out
-        try! result.run()
-        let res = String(data: out.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)
-        return UInt64(res?.split(separator: ":")[1].trimmingCharacters(in: .whitespacesAndNewlines) ?? "4") ?? 4
-    }
-    
     static func whoami() -> String {
         let executableURL = URL(fileURLWithPath: "/usr/bin/whoami")
         let out = Pipe()
@@ -60,20 +52,9 @@ class HostMachine {
         return res
     }
     
-    static func getMaximumCpuCount() -> Int {
-        let executableURL = URL(fileURLWithPath: "/usr/sbin/sysctl")
-        let out = Pipe()
-        let result = Process()
-        result.executableURL = executableURL
-        result.arguments = ["hw.ncpu"]
-        result.standardOutput = out
-        try! result.run()
-        let res = String(data: out.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)
-        return Int(res?.split(separator: ":")[1].trimmingCharacters(in: .whitespacesAndNewlines) ?? "4") ?? 4
-    }
 }
 
-class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDelegate, NSCoding {
+class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDelegate, NSCoding, VZVirtioSocketListenerDelegate {
     
     override init() {
         super.init()
@@ -215,6 +196,7 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         
         let networkDevice = VZVirtioNetworkDeviceConfiguration()
         networkDevice.attachment = VZNATNetworkDeviceAttachment()
+        
         let config = VZVirtualMachineConfiguration()
         config.bootLoader = bootloader
         config.cpuCount = cpuCount
@@ -223,9 +205,11 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         config.memoryBalloonDevices = [memoryBalloon]
         config.serialPorts = [serial]
         config.storageDevices = [blockDevice]
+
         for attachments in blockAttachments {
             config.storageDevices.append(attachments)
         }
+    
         config.networkDevices = [networkDevice]
         do {
             try config.validate()

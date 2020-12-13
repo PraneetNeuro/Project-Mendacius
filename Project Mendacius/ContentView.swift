@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import Virtualization
 
 struct ContentView: View {
     
@@ -199,10 +200,10 @@ struct ContentView: View {
                             Text("CPU Count : \(round(cpuCount))")
                             Spacer()
                         }.padding([.leading])
-                        Slider(value: $memorySizeinGB, in: 0.5...Double(Int((HostMachine.getMaxMemorySize() / UInt64(memRatioConstant))) - 2), label: {
+                        Slider(value: $memorySizeinGB, in: 0.5...Double(Int((VZVirtualMachineConfiguration.maximumAllowedMemorySize / UInt64(memRatioConstant))) - 2), label: {
                             Text("Memory Size")
                         }).padding([.leading,.trailing])
-                        Slider(value: $cpuCount, in: 1...Double(Int(HostMachine.getMaximumCpuCount())), label: {
+                        Slider(value: $cpuCount, in: 1...Double(VZVirtualMachineConfiguration.maximumAllowedCPUCount), label: {
                             Text("CPU Count")
                         }).padding([.leading,.trailing])
                         if HostMachine.machineHardwareName == "arm64" {
