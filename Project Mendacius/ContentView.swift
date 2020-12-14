@@ -82,6 +82,7 @@ struct ContentView: View {
                         }, label: {
                             Image(systemName: "plus")
                         })
+                        .help("Create a new VM")
                         .padding(.top, 15)
                         .padding(.leading)
                         Button(action: {
@@ -105,6 +106,7 @@ struct ContentView: View {
                         }, label: {
                             Image(systemName: "play.fill")
                         })
+                        .help("Run")
                         .padding(.top, 15)
                         .padding(.leading)
                         .disabled(viewModel.state == .running || VM_name == "")
@@ -119,6 +121,7 @@ struct ContentView: View {
                         }, label: {
                             Image(systemName: "pause.fill")
                         })
+                        .help("Pause VM")
                         .padding(.top, 15)
                         .padding(.leading)
                         .disabled(viewModel.state == .paused || VM_name == "" || viewModel.state == nil)
@@ -133,6 +136,7 @@ struct ContentView: View {
                         }, label: {
                             Image(systemName: "square.fill")
                         })
+                        .help("Stop VM")
                         .padding(.top, 15)
                         .padding(.leading)
                         .disabled(VM_name == "" || viewModel.state == nil)
@@ -143,6 +147,7 @@ struct ContentView: View {
                         }, label: {
                             Image(systemName: "eyes.inverse")
                         })
+                        .help("Show Console")
                         .padding(.top, 15)
                         .padding(.leading)
                         .disabled(viewModel.state != .running)
@@ -170,6 +175,9 @@ struct ContentView: View {
                 Spacer()
                 if VM_name != "" && (UserDefaults.standard.array(forKey: "vms") ?? []).count > 0  {
                     Text("\(VM_name)\nMemory: \(VirtualMachine.getDetails(VM_Name: VM_name, param: 1)) GB\nCPU Count: \(VirtualMachine.getDetails(VM_Name: VM_name, param: 2))")
+                }
+                else {
+                    Text("Click on \(Image(systemName:"plus")) to create a new Virtual Machine or\n") + Text("select a VM from the side bar and click on \(Image(systemName: "play.fill")) to run")
                 }
                 Spacer()
             }

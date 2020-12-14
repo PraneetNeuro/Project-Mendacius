@@ -223,6 +223,7 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         }
     
         config.networkDevices = [networkDevice]
+
         do {
             try config.validate()
             
