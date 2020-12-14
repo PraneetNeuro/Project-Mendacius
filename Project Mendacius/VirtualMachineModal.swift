@@ -40,6 +40,18 @@ class HostMachine {
         return identifier.trimmingCharacters(in: .controlCharacters)
     }
     
+    static func getMaximumCpuCount() -> Int {
+        let executableURL = URL(fileURLWithPath: "/usr/sbin/sysctl")
+        let out = Pipe()
+        let result = Process()
+        result.executableURL = executableURL
+        result.arguments = ["hw.ncpu"]
+        result.standardOutput = out
+        try! result.run()
+        let res = String(data: out.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)
+        return Int(res?.split(separator: ":")[1].trimmingCharacters(in: .whitespacesAndNewlines) ?? "4") ?? 4
+    }
+    
     static func whoami() -> String {
         let executableURL = URL(fileURLWithPath: "/usr/bin/whoami")
         let out = Pipe()
@@ -149,8 +161,8 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         
         let bootloader = VZLinuxBootLoader(kernelURL: kernelURL)
         bootloader.initialRamdiskURL = initialRamdiskURL
-        //bootloader.commandLine = "console=hvc0"
-        bootloader.commandLine = "console=tty0"
+        bootloader.commandLine = "console=hvc0 root=/dev/vda"
+        //bootloader.commandLine = "console=tty0"
         
         let serial = VZVirtioConsoleDeviceSerialPortConfiguration()
         serial.attachment = VZFileHandleSerialPortAttachment(
@@ -185,7 +197,7 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         do {
             blockAttachment = try VZDiskImageStorageDeviceAttachment(
                 url: bootableImageURL,
-                readOnly: true
+                readOnly: false
             )
         } catch {
             NSLog("Failed to load bootableImage: \(error)")

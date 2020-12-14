@@ -197,13 +197,13 @@ struct ContentView: View {
                         }.padding([.leading])
                         .padding([.top, .bottom], 2)
                         HStack {
-                            Text("CPU Count : \(round(cpuCount))")
+                            Text("CPU Count : \(Int(cpuCount))")
                             Spacer()
                         }.padding([.leading])
                         Slider(value: $memorySizeinGB, in: 0.5...Double(Int((VZVirtualMachineConfiguration.maximumAllowedMemorySize / UInt64(memRatioConstant))) - 2), label: {
                             Text("Memory Size")
                         }).padding([.leading,.trailing])
-                        Slider(value: $cpuCount, in: 1...Double(VZVirtualMachineConfiguration.maximumAllowedCPUCount), label: {
+                        Slider(value: $cpuCount, in: 1...Double(HostMachine.getMaximumCpuCount()), label: {
                             Text("CPU Count")
                         }).padding([.leading,.trailing])
                         if HostMachine.machineHardwareName == "arm64" {
