@@ -14,3 +14,10 @@ Decompress the SwiftTerm.zip file present in the Xcode project folder before bui
 ## Note:
 Disk creation under Rosetta translation layer hasn't been verified.
 Disk creation support for Apple Silicon based macs being worked upon.
+
+## Screenshots:
+![Homescreen](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/home.png?raw=true)
+![Download the required images to run Ubuntu-Server based on CPU architecture](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/downloads.png?raw=true)
+![Create / Configure new VM](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/create-new-vm.png?raw=true)
+![VM Configuration](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/configure.png?raw=true)
+![VM running Ubuntu](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/vm_ubuntu.png?raw=true)
