@@ -17,12 +17,7 @@ Disk creation support for Apple Silicon based macs being worked upon.
 
 ## Screenshots:
 ![Homescreen](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/home.png?raw=true)
-Homescreen
 ![Download the required images to run Ubuntu-Server based on CPU architecture](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/downloads.png?raw=true)
-Download the required images to run Ubuntu-Server based on CPU architecture
 ![Create / Configure new VM](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/create-new-vm.png?raw=true)
-Create / Configure new VM
 ![VM Configuration](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/configure.png?raw=true)
-VM Configuration
 ![VM running Ubuntu](https://github.com/PraneetNeuro/Project-Mendacius/blob/main/snaps/vm_ubuntu.png?raw=true)
-VM running Ubuntu
