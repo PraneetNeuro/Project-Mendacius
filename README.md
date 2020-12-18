@@ -17,6 +17,7 @@ Disk creation support for Apple Silicon based macs being worked upon.
 
 ## Personalisation:
 Customise the console's foreground color by using the command "defaults write com.luby.Project-Mendacius vmfg_<r/g/b> <value in range 0-65535>"
+
 Customise the console's background color by using the command "defaults write com.luby.Project-Mendacius vmbg_<r/g/b> <value in range 0-65535>"
 
 ## Screenshots:
