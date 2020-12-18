@@ -15,6 +15,18 @@ class ConsoleViewController: NSViewController, TerminalViewDelegate {
         let terminalView = TerminalView()
         terminalView.translatesAutoresizingMaskIntoConstraints = false
         terminalView.terminalDelegate = self
+        if UserDefaults.standard.value(forKey: "vmbg_r") == nil && UserDefaults.standard.value(forKey: "vmbg_g") == nil && UserDefaults.standard.value(forKey: "vmbg_b") == nil && UserDefaults.standard.value(forKey: "vmfg_r") == nil && UserDefaults.standard.value(forKey: "vmfg_g") == nil && UserDefaults.standard.value(forKey: "vmfg_b") == nil {
+            UserDefaults.standard.set(0, forKey: "vmbg_r")
+            UserDefaults.standard.set(0, forKey: "vmbg_g")
+            UserDefaults.standard.set(0, forKey: "vmbg_b")
+            UserDefaults.standard.set(35389, forKey: "vmfg_r")
+            UserDefaults.standard.set(35389, forKey: "vmfg_g")
+            UserDefaults.standard.set(35389, forKey: "vmfg_b")
+        }
+        let bgColor = Color(red: UInt16(UserDefaults.standard.integer(forKey: "vmbg_r")), green: UInt16(UserDefaults.standard.integer(forKey: "vmbg_g")), blue: UInt16(UserDefaults.standard.integer(forKey: "vmbg_b")))
+        let fgColor = Color(red: UInt16(UserDefaults.standard.integer(forKey: "vmfg_r")), green: UInt16(UserDefaults.standard.integer(forKey: "vmfg_g")), blue: UInt16(UserDefaults.standard.integer(forKey: "vmfg_b")))
+        terminalView.setBackgroundColor(source: terminalView.getTerminal(), color: bgColor)
+        terminalView.setForegroundColor(source: terminalView.getTerminal(), color: fgColor)
         return terminalView
     }()
     
@@ -31,7 +43,6 @@ class ConsoleViewController: NSViewController, TerminalViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(terminalView)
         NSLayoutConstraint.activate([
             terminalView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -44,7 +55,6 @@ class ConsoleViewController: NSViewController, TerminalViewDelegate {
     func configure(with readPipe: Pipe, writePipe: Pipe) {
         self.readPipe = readPipe
         self.writePipe = writePipe
-        
         readPipe.fileHandleForReading.readabilityHandler = { [weak self] pipe in
             let data = pipe.availableData
             if let strongSelf = self {
@@ -56,7 +66,6 @@ class ConsoleViewController: NSViewController, TerminalViewDelegate {
     }
     
     func sizeChanged(source: TerminalView, newCols: Int, newRows: Int) {
-        
     }
     
     func setTerminalTitle(source: TerminalView, title: String) {
@@ -68,6 +77,6 @@ class ConsoleViewController: NSViewController, TerminalViewDelegate {
     }
     
     func scrolled(source: TerminalView, position: Double) {
-        
+
     }
 }
