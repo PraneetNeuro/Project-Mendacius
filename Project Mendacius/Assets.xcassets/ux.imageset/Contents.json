@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "Hugging_Face_Emoji_2028ce8b-c213-4d45-94aa-21e1a0842b4d_large.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

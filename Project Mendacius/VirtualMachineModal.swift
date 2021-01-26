@@ -10,6 +10,20 @@ import Virtualization
 import Cocoa
 import Combine
 
+class Singleton: ObservableObject {
+    
+    private init() {}
+    
+    enum modesOfOperation {
+        case mendacius
+        case qemu
+    }
+    
+    public static var shared = Singleton()
+    
+    @Published var currentMode: modesOfOperation = .mendacius
+}
+
 class VirtualMachine {
     static func getDetails(VM_Name: String, param: Int) -> Int {
         let decodedObj = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData((UserDefaults.standard.data(forKey: VM_Name) ?? Data(base64Encoded: ""))!) as? VirtualMachineInstance)
@@ -62,6 +76,13 @@ class HostMachine {
         try! result.run()
         let res = String(data: out.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!.trimmingCharacters(in: .whitespacesAndNewlines)
         return res
+    }
+    
+    static func launchQemu(bootableImageURL: String) {
+        let qemuProcess = Process()
+        qemuProcess.executableURL = URL(fileURLWithPath: "/usr/local/bin/qemu-system-x86_64")
+        qemuProcess.arguments = ["-cdrom", bootableImageURL, "-drive", "file=\(HostMachine.disks.first!.absoluteString)", "-m", "4096"]
+        try? qemuProcess.run()
     }
     
 }

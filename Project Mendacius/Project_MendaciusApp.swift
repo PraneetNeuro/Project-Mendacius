@@ -9,10 +9,23 @@ import SwiftUI
 
 @main
 struct Project_MendaciusApp: App {
+    
+    @ObservedObject var appState = Singleton.shared
+    @State var onboardingComplete = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-        }.commands(content: {
+            if UserDefaults.standard.bool(forKey: "isOnboardingComplete") {
+                ContentView()
+            } else {
+                if !onboardingComplete {
+                    OnboardingView(onboardingComplete: $onboardingComplete)
+                } else {
+                    ContentView()
+                }
+            }
+        }.windowStyle(HiddenTitleBarWindowStyle())
+        .commands(content: {
             CommandMenu(Text("Downloads"), content: {
                 VStack{
                     Button("initrd - Ubuntu Server", action: {
@@ -28,6 +41,20 @@ struct Project_MendaciusApp: App {
                             NSWorkspace.shared.open(URL(string: "https://drive.google.com/file/d/1RR6cbFwBq4bJh7sgIPByOexXQqdu0Urq/view?usp=sharing")!)
                         }
                     })
+                }
+            })
+            
+            CommandMenu(Text(appState.currentMode == .mendacius ? "Qemu" : "Mode"), content: {
+                VStack{
+                    if appState.currentMode == .mendacius {
+                        Button("Launch Qemu", action: {
+                            Singleton.shared.currentMode = .qemu
+                        })
+                    } else {
+                        Button("Switch to normal mode", action: {
+                            appState.currentMode = .mendacius
+                        })
+                    }
                 }
             })
         })
