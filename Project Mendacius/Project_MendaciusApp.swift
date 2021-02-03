@@ -18,11 +18,13 @@ struct Project_MendaciusApp: App {
             if UserDefaults.standard.bool(forKey: "isOnboardingComplete") {
                 ContentView()
             } else {
-                if !onboardingComplete {
-                    OnboardingView(onboardingComplete: $onboardingComplete)
-                } else {
-                    ContentView()
-                }
+                VStack {
+                    if !onboardingComplete {
+                        OnboardingView(onboardingComplete: $onboardingComplete)
+                    } else {
+                        ContentView()
+                    }
+                }.transition(.move(edge: .trailing))
             }
         }.windowStyle(HiddenTitleBarWindowStyle())
         .commands(content: {

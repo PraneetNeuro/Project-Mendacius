@@ -56,8 +56,10 @@ struct OnboardingView: View {
             featureView(img: "performance", title: "PERFORMANCE", desc: "Built with performance and efficiency in mind, minimising memory and CPU overhead.")
             featureView(img: "ux", title: "USER EXPERIENCE", desc: "Starting from eliminating the process of installation to configuring VMs and automating complex tasks, everything is too simple")
             Button(action: {
-                UserDefaults.standard.set(true, forKey: "isOnboardingComplete")
-                onboardingComplete = true
+                withAnimation {
+                    UserDefaults.standard.set(true, forKey: "isOnboardingComplete")
+                    onboardingComplete = true
+                }
             }) {
                 Text("Let's go!")
                     .font(.headline)

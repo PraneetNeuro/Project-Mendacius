@@ -21,6 +21,15 @@ class Singleton: ObservableObject {
     
     public static var shared = Singleton()
     
+    func pushNotification(title: String, message: String) {
+        let notification = NSUserNotification()
+            notification.title = title
+            notification.subtitle = message
+            notification.soundName = NSUserNotificationDefaultSoundName
+            notification.deliveryDate = Date(timeIntervalSinceNow: 5)
+            NSUserNotificationCenter.default.deliver(notification)
+    }
+    
     @Published var currentMode: modesOfOperation = .mendacius
 }
 
@@ -280,6 +289,7 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
             } catch {
                 NSLog("Failed to stop: \(error)")
             }
+            Singleton.shared.pushNotification(title: "Stopping VM", message: "This might take a moment to deinitialise the VM and deallocate the resources")
             self.virtualMachine = nil
         }
     }

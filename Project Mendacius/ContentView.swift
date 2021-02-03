@@ -73,107 +73,6 @@ struct ContentView: View {
                 }.frame(width: 175)
                 Spacer()
                 VStack {
-//                    ZStack(alignment: .center) {
-//                        RoundedRectangle(cornerRadius: 16)
-//                            .frame(width: 400, height: 35, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-//                            .padding(.top)
-//                            .opacity(0.2)
-//                        HStack {
-//                            Button(action: {
-//                                isShowingCreateVMSheet = true
-//                            }, label: {
-//                                Image(systemName: "plus")
-//                            })
-//                            .help("Create a new VM")
-//                            .padding(.top, 15)
-//                            .padding(.leading)
-//                            Button(action: {
-//                                let decodedObj = (try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.data(forKey: VM_name)!) as! VirtualMachineInstance)
-//                                viewModel.vm_name = decodedObj.vm_name
-//                                viewModel.bootableImageURL = decodedObj.bootableImageURL
-//                                viewModel.kernelURL = decodedObj.kernelURL
-//                                viewModel.initialRamdiskURL = decodedObj.initialRamdiskURL
-//                                viewModel.cpuCount = decodedObj.cpuCount
-//                                viewModel.memorySizeinGB = decodedObj.memorySizeinGB
-//                                if viewModel.state == nil {
-//                                    viewModel.start()
-//                                    showConsole()
-//                                } else if viewModel.state == .paused {
-//                                    if let vm = viewModel.virtualMachine {
-//                                        if vm.canResume {
-//                                            vm.resume(completionHandler: { _ in })
-//                                        }
-//                                    }
-//                                }
-//                            }, label: {
-//                                Image(systemName: "play.fill")
-//                            })
-//                            .help("Run")
-//                            .padding(.top, 15)
-//                            .padding(.leading)
-//                            .disabled(viewModel.state == .running || VM_name == "")
-//                            Button(action: {
-//                                if viewModel.state == .running {
-//                                    if let vm = viewModel.virtualMachine {
-//                                        if vm.canPause {
-//                                            vm.pause(completionHandler: { _ in })
-//                                        }
-//                                    }
-//                                }
-//                            }, label: {
-//                                Image(systemName: "pause.fill")
-//                            })
-//                            .help("Pause VM")
-//                            .padding(.top, 15)
-//                            .padding(.leading)
-//                            .disabled(viewModel.state == .paused || VM_name == "" || viewModel.state == nil)
-//                            Button(action: {
-//                                if let vm = viewModel.virtualMachine {
-//                                    if vm.canRequestStop {
-//                                        viewModel.stop()
-//                                        viewModel.consoleWindowController.close()
-//                                        viewModel.state = nil
-//                                    }
-//                                }
-//                            }, label: {
-//                                Image(systemName: "square.fill")
-//                            })
-//                            .help("Stop VM")
-//                            .padding(.top, 15)
-//                            .padding(.leading)
-//                            .disabled(VM_name == "" || viewModel.state == nil)
-//                            Button(action: {
-//                                if viewModel.state != nil {
-//                                    showConsole()
-//                                }
-//                            }, label: {
-//                                Image(systemName: "eyes.inverse")
-//                            })
-//                            .help("Show Console")
-//                            .padding(.top, 15)
-//                            .padding(.leading)
-//                            .disabled(viewModel.state != .running)
-//                            Button(action: {
-//                                viewModel.writePipe.fileHandleForWriting.write(Data("yes | sudo apt-get install openssh-server\r".utf8))
-//                            }, label: {
-//                                Image(systemName: "gear")
-//                            })
-//                            .padding(.top, 15)
-//                            .padding(.leading)
-//                            .disabled(viewModel.state != .running)
-//                            .help("Install essential tools for the VM")
-//                            Button(action: {
-//                                viewModel.writePipe.fileHandleForWriting.write(Data("hostname -I | awk '{print $1}'\r".utf8))
-//                            }, label: {
-//                                Image(systemName: "network")
-//                            })
-//                            .padding(.top, 15)
-//                            .padding(.leading)
-//                            .disabled(viewModel.state != .running)
-//                            .help("Get IP address of the VM")
-//                            Spacer()
-//                        }
-//                    }
                     Spacer()
                     if VM_name != "" && (UserDefaults.standard.array(forKey: "vms") ?? []).count > 0  {
                         Text("\(VM_name)\nMemory: \(VirtualMachine.getDetails(VM_Name: VM_name, param: 1)) GB\nCPU Count: \(VirtualMachine.getDetails(VM_Name: VM_name, param: 2))")
@@ -183,111 +82,111 @@ struct ContentView: View {
                     }
                     Spacer()
                 }
+                .toolbar(content: {
+                    ZStack(alignment: .center) {
+                        RoundedRectangle(cornerRadius: 16)
+                            .frame(width: 400, height: 35, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .padding(.top)
+                            .opacity(0.2)
+                        HStack {
+                            Button(action: {
+                                isShowingCreateVMSheet = true
+                            }, label: {
+                                Image(systemName: "plus")
+                            })
+                            .help("Create a new VM")
+                            .padding(.top, 15)
+                            .padding(.leading)
+                            Button(action: {
+                                let decodedObj = (try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.data(forKey: VM_name)!) as! VirtualMachineInstance)
+                                viewModel.vm_name = decodedObj.vm_name
+                                viewModel.bootableImageURL = decodedObj.bootableImageURL
+                                viewModel.kernelURL = decodedObj.kernelURL
+                                viewModel.initialRamdiskURL = decodedObj.initialRamdiskURL
+                                viewModel.cpuCount = decodedObj.cpuCount
+                                viewModel.memorySizeinGB = decodedObj.memorySizeinGB
+                                if viewModel.state == nil {
+                                    viewModel.start()
+                                    showConsole()
+                                } else if viewModel.state == .paused {
+                                    if let vm = viewModel.virtualMachine {
+                                        if vm.canResume {
+                                            vm.resume(completionHandler: { _ in })
+                                        }
+                                    }
+                                }
+                            }, label: {
+                                Image(systemName: "play.fill")
+                            })
+                            .help("Run")
+                            .padding(.top, 15)
+                            .padding(.leading)
+                            .disabled(viewModel.state == .running || VM_name == "")
+                            Button(action: {
+                                if viewModel.state == .running {
+                                    if let vm = viewModel.virtualMachine {
+                                        if vm.canPause {
+                                            vm.pause(completionHandler: { _ in })
+                                        }
+                                    }
+                                }
+                            }, label: {
+                                Image(systemName: "pause.fill")
+                            })
+                            .help("Pause VM")
+                            .padding(.top, 15)
+                            .padding(.leading)
+                            .disabled(viewModel.state == .paused || VM_name == "" || viewModel.state == nil)
+                            Button(action: {
+                                if let vm = viewModel.virtualMachine {
+                                    if vm.canRequestStop {
+                                        viewModel.stop()
+                                        viewModel.consoleWindowController.close()
+                                        viewModel.state = nil
+                                    }
+                                }
+                            }, label: {
+                                Image(systemName: "square.fill")
+                            })
+                            .help("Stop VM")
+                            .padding(.top, 15)
+                            .padding(.leading)
+                            .disabled(VM_name == "" || viewModel.state == nil)
+                            Button(action: {
+                                if viewModel.state != nil {
+                                    showConsole()
+                                }
+                            }, label: {
+                                Image(systemName: "eyes.inverse")
+                            })
+                            .help("Show Console")
+                            .padding(.top, 15)
+                            .padding(.leading)
+                            .disabled(viewModel.state != .running)
+                            Button(action: {
+                                viewModel.writePipe.fileHandleForWriting.write(Data("yes | sudo apt-get install openssh-server\r".utf8))
+                            }, label: {
+                                Image(systemName: "gear")
+                            })
+                            .padding(.top, 15)
+                            .padding(.leading)
+                            .disabled(viewModel.state != .running)
+                            .help("Install essential tools for the VM")
+                            Button(action: {
+                                viewModel.writePipe.fileHandleForWriting.write(Data("hostname -I | awk '{print $1}'\r".utf8))
+                            }, label: {
+                                Image(systemName: "network")
+                            })
+                            .padding(.top, 15)
+                            .padding(.leading)
+                            .disabled(viewModel.state != .running)
+                            .help("Get IP address of the VM")
+                            Spacer()
+                        }
+                    }.padding(.leading, 85)
+                })
                 Spacer()
             }.frame(width: 600, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            .toolbar(content: {
-                ZStack(alignment: .center) {
-                    RoundedRectangle(cornerRadius: 16)
-                        .frame(width: 400, height: 35, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        .padding(.top)
-                        .opacity(0.2)
-                    HStack {
-                        Button(action: {
-                            isShowingCreateVMSheet = true
-                        }, label: {
-                            Image(systemName: "plus")
-                        })
-                        .help("Create a new VM")
-                        .padding(.top, 15)
-                        .padding(.leading)
-                        Button(action: {
-                            let decodedObj = (try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.data(forKey: VM_name)!) as! VirtualMachineInstance)
-                            viewModel.vm_name = decodedObj.vm_name
-                            viewModel.bootableImageURL = decodedObj.bootableImageURL
-                            viewModel.kernelURL = decodedObj.kernelURL
-                            viewModel.initialRamdiskURL = decodedObj.initialRamdiskURL
-                            viewModel.cpuCount = decodedObj.cpuCount
-                            viewModel.memorySizeinGB = decodedObj.memorySizeinGB
-                            if viewModel.state == nil {
-                                viewModel.start()
-                                showConsole()
-                            } else if viewModel.state == .paused {
-                                if let vm = viewModel.virtualMachine {
-                                    if vm.canResume {
-                                        vm.resume(completionHandler: { _ in })
-                                    }
-                                }
-                            }
-                        }, label: {
-                            Image(systemName: "play.fill")
-                        })
-                        .help("Run")
-                        .padding(.top, 15)
-                        .padding(.leading)
-                        .disabled(viewModel.state == .running || VM_name == "")
-                        Button(action: {
-                            if viewModel.state == .running {
-                                if let vm = viewModel.virtualMachine {
-                                    if vm.canPause {
-                                        vm.pause(completionHandler: { _ in })
-                                    }
-                                }
-                            }
-                        }, label: {
-                            Image(systemName: "pause.fill")
-                        })
-                        .help("Pause VM")
-                        .padding(.top, 15)
-                        .padding(.leading)
-                        .disabled(viewModel.state == .paused || VM_name == "" || viewModel.state == nil)
-                        Button(action: {
-                            if let vm = viewModel.virtualMachine {
-                                if vm.canRequestStop {
-                                    viewModel.stop()
-                                    viewModel.consoleWindowController.close()
-                                    viewModel.state = nil
-                                }
-                            }
-                        }, label: {
-                            Image(systemName: "square.fill")
-                        })
-                        .help("Stop VM")
-                        .padding(.top, 15)
-                        .padding(.leading)
-                        .disabled(VM_name == "" || viewModel.state == nil)
-                        Button(action: {
-                            if viewModel.state != nil {
-                                showConsole()
-                            }
-                        }, label: {
-                            Image(systemName: "eyes.inverse")
-                        })
-                        .help("Show Console")
-                        .padding(.top, 15)
-                        .padding(.leading)
-                        .disabled(viewModel.state != .running)
-                        Button(action: {
-                            viewModel.writePipe.fileHandleForWriting.write(Data("yes | sudo apt-get install openssh-server\r".utf8))
-                        }, label: {
-                            Image(systemName: "gear")
-                        })
-                        .padding(.top, 15)
-                        .padding(.leading)
-                        .disabled(viewModel.state != .running)
-                        .help("Install essential tools for the VM")
-                        Button(action: {
-                            viewModel.writePipe.fileHandleForWriting.write(Data("hostname -I | awk '{print $1}'\r".utf8))
-                        }, label: {
-                            Image(systemName: "network")
-                        })
-                        .padding(.top, 15)
-                        .padding(.leading)
-                        .disabled(viewModel.state != .running)
-                        .help("Get IP address of the VM")
-                        Spacer()
-                    }
-                }.padding(.leading, 85)
-            })
             .sheet(isPresented: $isShowingCreateVMSheet, content: {
                 ScrollView {
                     VStack {
