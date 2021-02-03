@@ -54,7 +54,7 @@
 		B7A9C50D256F9EAB00E4935D /* VirtualMachineModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualMachineModal.swift; sourceTree = "<group>"; };
 		B7A9C512256F9F8C00E4935D /* ConsoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConsoleViewController.swift; path = "Project Mendacius/ConsoleViewController.swift"; sourceTree = SOURCE_ROOT; };
 		B7A9C542256FA0E100E4935D /* SwiftTerm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftTerm; sourceTree = "<group>"; };
-		B7C1DB2C25C009270085010C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = "/Users/praneets/Desktop/Project-Mendacius/Project Mendacius/OnboardingView.swift"; sourceTree = "<absolute>"; };
+		B7C1DB2C25C009270085010C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = "Project Mendacius/OnboardingView.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
