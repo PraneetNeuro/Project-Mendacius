@@ -21,6 +21,7 @@ struct ContentView: View {
     @State var memorySizeinGB: Double = 0.5
     @State var cpuCount: Double = 2
     @State var VM_name: String = ""
+    @State var mac: String = ""
     @State var vms_: [String] = UserDefaults.standard.array(forKey: "vms") as? [String] ?? []
     
     private func showConsole() {
@@ -97,6 +98,7 @@ struct ContentView: View {
                             .help("Create a new VM")
                             .padding(.top, 15)
                             .padding(.leading)
+                            .keyboardShortcut("n")
                             Button(action: {
                                 let decodedObj = (try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.data(forKey: VM_name)!) as! VirtualMachineInstance)
                                 viewModel.vm_name = decodedObj.vm_name
@@ -105,6 +107,7 @@ struct ContentView: View {
                                 viewModel.initialRamdiskURL = decodedObj.initialRamdiskURL
                                 viewModel.cpuCount = decodedObj.cpuCount
                                 viewModel.memorySizeinGB = decodedObj.memorySizeinGB
+                                viewModel.mac_addr = decodedObj.mac_addr
                                 if viewModel.state == nil {
                                     viewModel.start()
                                     showConsole()
@@ -122,6 +125,7 @@ struct ContentView: View {
                             .padding(.top, 15)
                             .padding(.leading)
                             .disabled(viewModel.state == .running || VM_name == "")
+                            .keyboardShortcut("r")
                             Button(action: {
                                 if viewModel.state == .running {
                                     if let vm = viewModel.virtualMachine {
@@ -137,6 +141,7 @@ struct ContentView: View {
                             .padding(.top, 15)
                             .padding(.leading)
                             .disabled(viewModel.state == .paused || VM_name == "" || viewModel.state == nil)
+                            .keyboardShortcut("p")
                             Button(action: {
                                 if let vm = viewModel.virtualMachine {
                                     if vm.canRequestStop {
@@ -152,6 +157,7 @@ struct ContentView: View {
                             .padding(.top, 15)
                             .padding(.leading)
                             .disabled(VM_name == "" || viewModel.state == nil)
+                            .keyboardShortcut(.delete)
                             Button(action: {
                                 if viewModel.state != nil {
                                     showConsole()
@@ -183,7 +189,7 @@ struct ContentView: View {
                             .help("Get IP address of the VM")
                             Spacer()
                         }
-                    }.padding(.leading, 85)
+                    }.padding(.leading, 87)
                 })
                 Spacer()
             }.frame(width: 600, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -298,11 +304,19 @@ struct ContentView: View {
                                     processDropItem(of: .image, items: itemProviders)
                                     return true
                                 }
+                            
+                            HStack {
+                                TextField("MAC address", text: $mac)
+                                Spacer()
+                            }.padding([.leading])
+                            .padding([.top, .bottom], 2)
+                            
                             HStack {
                                 Button(action: {
                                     viewModel.memorySizeinGB = memorySizeinGB
                                     viewModel.cpuCount = Int(cpuCount)
                                     viewModel.vm_name = VM_name
+                                    viewModel.mac_addr = mac
                                     isShowingCreateVMSheet = false
                                     if viewModel.state == nil {
                                         viewModel.start()
@@ -317,6 +331,7 @@ struct ContentView: View {
                                     viewModel.memorySizeinGB = memorySizeinGB
                                     viewModel.cpuCount = Int(cpuCount)
                                     viewModel.vm_name = VM_name
+                                    viewModel.mac_addr = mac
                                     UserDefaults.standard.set(memorySizeinGB, forKey: "\(VM_name)_memsize")
                                     UserDefaults.standard.set(cpuCount, forKey: "\(VM_name)_cpucount")
                                     if HostMachine.disks.count > 0 {
@@ -341,7 +356,7 @@ struct ContentView: View {
                                 Button(action: { isShowingCreateVMSheet = false }, label: {
                                     Label("Cancel", systemImage: "xmark")
                                 }).padding(.leading)
-                            }
+                            }.padding(.top, 2)
                         }
                     }.padding()
                 }.frame(width: 600, height: 500, alignment: .center)

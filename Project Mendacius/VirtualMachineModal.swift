@@ -110,6 +110,7 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         coder.encode(vm_name, forKey: "vmname")
         coder.encode(HostMachine.disks, forKey: "\(vm_name)_disks_of_vm")
         coder.encode(cpuCount, forKey: "cpucount")
+        coder.encode(mac_addr, forKey: "mac_addr")
     }
     
     required init?(coder: NSCoder) {
@@ -121,9 +122,11 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         memorySizeinGB = coder.decodeObject(forKey: "memorysize") as? Double ?? UserDefaults.standard.double(forKey: "\(vm_name)_memsize")
         cpuCount = coder.decodeObject(forKey: "cpucount") as? Int ?? Int(UserDefaults.standard.double(forKey: "\(vm_name)_cpucount"))
         HostMachine.disks = coder.decodeObject(forKey: "\(vm_name)_disks_of_vm") as? [URL] ?? []
+        mac_addr = coder.decodeObject(forKey: "mac_addr") as! String
     }
     
     var vm_name: String = ""
+    var mac_addr: String = ""
     @Published var virtualMachine: VZVirtualMachine?
     @Published var memorySizeinGB: Double = 0.5
     @Published var cpuCount: Int = 2
@@ -237,6 +240,16 @@ class VirtualMachineInstance : NSObject, ObservableObject, VZVirtualMachineDeleg
         let blockDevice = VZVirtioBlockDeviceConfiguration(attachment: blockAttachment)
         
         let networkDevice = VZVirtioNetworkDeviceConfiguration()
+        
+        if !mac_addr.isEmpty {
+            if let macAddress = VZMACAddress(string: mac_addr) {
+                networkDevice.macAddress = macAddress
+                print("Custom MAC address set successfully")
+            } else {
+                print("Invalid MAC address format")
+            }
+        }
+        
         networkDevice.attachment = VZNATNetworkDeviceAttachment()
         
         let config = VZVirtualMachineConfiguration()
