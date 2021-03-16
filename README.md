@@ -9,7 +9,8 @@ Makes the experience much more simpler by having quick action buttons for instal
 2. qemu (For running GUI based operating systems)
 
 ## Building:
-Decompress the SwiftTerm.zip file present in the Xcode project folder before building from source
+## Xcode is requirement for building the source.
+Decompress the SwiftTerm.zip file present in the Xcode project folder before building from source. 
 
 ## Note:
 Disk creation under Rosetta translation layer hasn't been verified.
